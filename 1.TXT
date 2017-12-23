@@ -1,0 +1,31 @@
+CREATE OR REPLACE FUNCTION findloc(d emp.deptno%type,j emp.job%type) return varchar
+is
+
+	vloc dept.loc%type;
+begin
+	select loc into vloc
+	from dept
+	where deptno in
+	(select deptno
+		from emp
+		where deptno = d
+		and job = j);
+return vloc;	
+end;
+/
+
+declare
+vvloc dept.loc%type;
+D EMP.DEPTNO%TYPE;
+J EMP.JOB%TYPE;
+begin
+d := :DEPTNO;
+j := :jOB;
+vvloc := findloc(d,j);
+if(vvloc in ('MUMBAI','CHENNAI'))THEN
+DBMS_OUTPUT.PUT_LINE('YES,LOC IS MUMBAI OR CHENNAI');
+ELSE
+DBMS_OUTPUT.PUT_LINE('NO,LOC IS NOT MUMBAI OR CHENNAI');
+end if; 
+end;
+/

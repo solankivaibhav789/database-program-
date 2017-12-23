@@ -1,0 +1,26 @@
+CREATE OR REPLACE FUNCTION findtoloc(l dept.loc%type,j emp.job%type) return number
+is
+c number(3);
+begin
+	select count(*) into c
+	from emp
+	where job = j
+        and deptno in
+	(select deptno
+		from dept
+		where loc=l);
+return c;	
+end findtoloc;
+/
+
+declare
+vcount number(3);
+L DEPT.LOC%TYPE;
+J EMP.JOB%TYPE;
+begin
+l := :loc;
+j := :job;
+vcount := findtoloc(l,j);
+dbms_outPUT.put_line('vcount:' || vcount);
+end;
+/

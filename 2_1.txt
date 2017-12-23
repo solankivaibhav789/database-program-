@@ -1,0 +1,30 @@
+create or replace procedure p1(e in emp.empno%type,d out emp.deptno%type,s out emp.sal%type)
+is
+dn dept.dname%type; 
+c emp.comm%type;
+j emp.job%type;
+p emp.sal%type;
+begin
+	select sal into s
+	from emp 
+	where empno= e;
+	
+	select comm into c
+	from emp
+	where empno=e;
+	
+	select deptno into d
+	from emp
+	where empno=e;
+	
+	select job into j
+	from emp
+	where empno = e;
+	
+        p:= 0.1*c;
+	if(s > p and j='MANAGER')then
+		s := 1.25*s;
+	end if;
+end;
+/
+

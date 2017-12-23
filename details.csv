@@ -1,0 +1,6 @@
+"Column Name","Data Type","Nullable","Default","Primary Key"
+"FORM_NO","NUMBER(3,0)","No","","1"
+"SEAT_NO","NUMBER(8,0)","Yes","",""
+"NAME","VARCHAR2(20)","Yes","",""
+"CATEGORY","VARCHAR2(10)","Yes","",""
+"PERCENTAGE","NUMBER(4,2)","Yes","",""

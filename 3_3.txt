@@ -1,0 +1,9 @@
+DECLARE
+E EMP.EMPNO%TYPE;
+D EMP.DEPTNO%TYPE;
+BEGIN
+E := :E;
+D := :D;
+PK1.P2(E,D);
+END;
+/ 
